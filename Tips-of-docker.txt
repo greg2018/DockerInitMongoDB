@@ -1,0 +1,111 @@
+docker pull rabbitmq:3-management
+
+docker pull sqshq/piggymetrics-mongodb
+
+C:\Users\gregq\AppData\Roaming\Docker
+
+C:\Users\gregq\AppData\Roaming\Docker Desktop
+
+
+mvn package -DskipTests
+
+docker image rm sqshq/piggymetrics-mongodb                  
+docker image rm sqshq/piggymetrics-turbine-stream-service   
+docker image rm sqshq/piggymetrics-monitoring               
+docker image rm sqshq/piggymetrics-notification-service     
+docker image rm sqshq/piggymetrics-statistics-service       
+docker image rm sqshq/piggymetrics-account-service          
+docker image rm sqshq/piggymetrics-auth-service             
+docker image rm sqshq/piggymetrics-gateway                  
+docker image rm sqshq/piggymetrics-registry                 
+docker image rm sqshq/piggymetrics-config                    
+
+
+														   
+docker build -t sqshq/piggymetrics-mongodb . 
+docker build -t sqshq/piggymetrics-turbine-stream-service . 
+docker build -t sqshq/piggymetrics-monitoring . 
+docker build -t sqshq/piggymetrics-notification-service . 
+docker build -t sqshq/piggymetrics-statistics-service . 
+docker build -t sqshq/piggymetrics-account-service . 
+docker build -t sqshq/piggymetrics-auth-service . 
+docker build -t sqshq/piggymetrics-gateway . 
+docker build -t sqshq/piggymetrics-registry . 
+docker build -t sqshq/piggymetrics-config .
+
+
+
+docker-compose -f docker-compose.dev.yml up
+
+docker-compose -f docker-compose.yml up
+
+docker-compose -f docker-compose1.yml up
+
+docker-compose -f docker-compose2.yml up
+
+docker-compose -f docker-compose-accoutdb.yml up
+
+
+http://localhost:4000
+
+
+List all containers (only IDs)
+docker ps -aq
+
+Stop all running containers
+docker stop $(docker ps -aq)
+
+Remove all containers
+docker rm $(docker ps -aq)
+
+Remove all images
+docker rmi $(docker images -q)
+
+
+FOR /f "tokens=*" %i IN ('docker ps -q') DO docker stop %i
+FOR /f "tokens=*" %i IN ('docker ps -a') DO docker rm %i
+
+# Delete all local image in powershell
+docker images -a -q | % { docker image rm $_ -f }
+
+#Delete all local container in powershell
+docker ps -aq | % { docker rm $_ -f }
+
+docker image rm api-docker-image   
+docker image rm docker101tutorial         
+docker image rm nginx              
+docker image rm python             
+docker image rm node               
+docker image rm openjdk            
+docker image rm mongo   
+
+
+docker run -p 27017:27017 sqshq/piggymetrics-mongodb
+
+
+docker build -t api-docker-image .
+
+
+4e05b6cb100c      
+e126dba5274c        
+
+http://localhost:9091/status/check
+http://localhost:8080/status/check
+
+http://localhost:8180/status/check
+
+docker build -t api-docker-image .
+
+#Remove all stopped containers.
+docker container prune
+
+docker pull greg2018/catnip
+
+
+#netstat command line
+netstat -an |find /i "listening" 
+
+netstat -an |find /i "3389" 
+ 
+netstat -an |find /i "27017" 
+

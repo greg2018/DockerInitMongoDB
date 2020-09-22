@@ -1,31 +1,20 @@
+use admin 
+
+show collections
+
+
+use dbtest 
 db.createUser(
-        {
-            user: "test01",
-            pwd: "123456",
-            roles: [
-                {
-                    role: "readWrite",
-                    db: "admin"
-                }
-            ]
-        }
-);
+  {
+    user: "admin2",
+    pwd: "admin2",
+    roles: [ { role: "readWrite", db: "dbtest" },
+			 { role: "userAdmin", db: "dbtest" }
+	]
+  }
+)
 
-db = db.getSiblingDB('dbtest');
-
-db.createUser(
-        {
-            user: "test02",
-            pwd: "123456",
-            roles: [
-                {
-                    role: "readWrite",
-                    db: "dbtest"
-                }
-            ]
-        }
-);
-
+use accounts
 
 db.accounts.update(
     { "_id": "demo" },
@@ -110,3 +99,4 @@ db.accounts.update(
     },
     { upsert: true }
 );
+
