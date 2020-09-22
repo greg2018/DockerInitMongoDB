@@ -1,0 +1,129 @@
+#Install Mpmgo DB
+Download and install
+
+#Customize Mongo DB
+	Created folder:
+	C:\UserApps2\MongoDbData\data\db
+	mongod Start the mongod with access control enabled.
+#Connect to mongo DB:
+	mongo 127.0.0.1:27017
+	mongo localhost:27017
+	
+#exit
+	exit
+
+#shutdown db
+	use admin
+	db.shutdownServer()
+	
+#enable authenticatiom
+use admin
+db.createUser(
+  {
+    user: "admin",
+    pwd: passwordPrompt(), // or cleartext password
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+
+mongod --auth --port 27017 --dbpath C:\UserApps2\MongoDbData\data\db
+
+mongo --username "admin" --password --authenticationDatabase admin --authenticationMechanism SCRAM-SHA-256
+
+db.auth("admin", passwordPrompt() )
+
+db.logout()
+
+use springBootMmongodbDocker
+
+db.auth("testuser", passwordPrompt() )
+
+db.createUser(
+  {
+    user: "test01",
+    pwd: passwordPrompt(), 
+    roles: [ { role: "readWrite", db: "test" } ]
+  }
+)
+
+db.auth("test01", passwordPrompt() )
+
+db.auth("testadmin", passwordPrompt() )
+
+db.createUser(
+  {
+    user: "test02",
+    pwd: passwordPrompt(), 
+    roles: [ { role: "readWrite", db: "test" } ]
+  }
+)
+
+###### Mongo shell script
+mongo -u admin -p 123456 --eval "printjson(db.serverStatus())"
+
+mongo -u admin -p 123456 < demo.js
+
+######
+[
+    {
+        "_id" : "admin.admin",
+        "userId" : UUID("17c6c72b-c6e7-474a-85ca-97b55b9d7721"),
+        "user" : "admin",
+        "db" : "admin",
+        "roles" : [ 
+            {
+                "role" : "userAdminAnyDatabase",
+                "db" : "admin"
+            }, 
+            {
+                "role" : "readWriteAnyDatabase",
+                "db" : "admin"
+            }
+        ],
+        "mechanisms" : [ 
+            "SCRAM-SHA-1", 
+            "SCRAM-SHA-256"
+        ]
+    },
+    {
+        "_id" : "admin.testuser",
+        "userId" : UUID("1ddbf693-9ed0-42d7-a6d4-80bc84acd6a2"),
+        "user" : "testuser",
+        "db" : "admin",
+        "roles" : [ 
+            {
+                "role" : "read",
+                "db" : "admin"
+            }, 
+            {
+                "role" : "readWrite",
+                "db" : "admin"
+            }, 
+            {
+                "role" : "readWriteAnyDatabase",
+                "db" : "admin"
+            }, 
+            {
+                "role" : "userAdminAnyDatabase",
+                "db" : "admin"
+            }, 
+            {
+                "role" : "dbAdminAnyDatabase",
+                "db" : "admin"
+            }
+        ],
+        "mechanisms" : [ 
+            "SCRAM-SHA-1", 
+            "SCRAM-SHA-256"
+        ]
+    }
+]
+
+
+
+ {role:'readWrite', db:'piggymetrics'}, {role:'userAdminAnyDatabase', db:'piggymetrics'},{role:'readWriteAnyDatabase', db:'piggymetrics'}
+
+
+
+
+
