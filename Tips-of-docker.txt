@@ -109,3 +109,6 @@ netstat -an |find /i "3389"
  
 netstat -an |find /i "27017" 
 
+
+docker-compose down
+
