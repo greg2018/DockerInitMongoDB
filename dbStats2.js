@@ -6,6 +6,8 @@ else{
 	print("+++++databaseName is not dbtest");
 }
 
+print("testVar="+testVar);
+
 conn = new Mongo();
 print("+++++001");
 db = conn.getDB(databaseName);

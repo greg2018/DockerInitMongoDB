@@ -58,7 +58,11 @@ docker stop $(docker ps -aq)
 Remove all containers
 docker rm $(docker ps -aq)
 
-Remove all images
+
+list all images 
+docker image ls -a
+
+Remove all images  (worked in powershell)
 docker rmi $(docker images -q)
 
 
@@ -112,3 +116,6 @@ netstat -an |find /i "27017"
 
 docker-compose down
 
+docker-compose -f docker-compose1.yml -f docker-compose.dev1.yml up
+
+docker-compose -f docker-compose-account-db-only.yml -f docker-compose.dev-accountdb-only.yml up
